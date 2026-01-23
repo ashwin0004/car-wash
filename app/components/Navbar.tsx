@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
 import { Search, ShoppingCart, User, Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 
 interface NavLink {
@@ -14,6 +15,25 @@ interface NavLink {
 
 export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [prevScrollPos, setPrevScrollPos] = useState(0);
+    const [visible, setVisible] = useState(true);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollPos = window.pageYOffset;
+
+            // Make navbar visible if scrolling up or at the top
+            // Hide navbar if scrolling down and past a threshold
+            const isVisible = prevScrollPos > currentScrollPos || currentScrollPos < 50;
+
+            setVisible(isVisible);
+            setPrevScrollPos(currentScrollPos);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [prevScrollPos]);
+
 
     const navLinks: NavLink[] = [
         {
@@ -85,7 +105,9 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className="fixed top-0 left-0 w-full z-50 bg-[#1f1f1f]/60 border-b border-[#2d2d2d]/30 sm:border-none backdrop-blur-[2px]">
+        <nav className={`fixed top-0 left-0 w-full z-50 bg-[#1f1f1f]/60 border-b border-[#2d2d2d]/30 sm:border-none backdrop-blur-[2px] transition-transform duration-300 ${visible ? 'translate-y-0' : '-translate-y-full'
+            }`}>
+
             {/* Container - 1180px fixed width centered */}
             <div className="max-w-[1180px] mx-auto relative h-[100px] flex items-center justify-between px-4 xl:px-0">
 
