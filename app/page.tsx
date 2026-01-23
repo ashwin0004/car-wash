@@ -1,5 +1,6 @@
 import HeroSlider from './components/HeroSlider';
 import AboutSection from './components/AboutSection';
+import ServicesSection from './components/ServicesSection';
 
 export default function Home() {
   return (
@@ -9,6 +10,9 @@ export default function Home() {
 
       {/* About Section (includes Services features) */}
       <AboutSection />
+
+      {/* Services Section (carousel/showcase) - below About */}
+      <ServicesSection />
     </main>
   );
 }

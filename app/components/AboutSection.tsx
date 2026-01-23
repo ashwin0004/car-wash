@@ -91,23 +91,30 @@ export default function AboutSection() {
                 </div>
 
                 {/* Services Grid (Now part of AboutSection) */}
-                <div className="mt-24 flex flex-col md:flex-row items-stretch justify-between">
+                <div className="mt-24 flex flex-col md:flex-row items-stretch justify-between gap-6">
                     {services.map((service, index) => (
                         <div
                             key={service.title}
-                            className={`flex-1 flex flex-col items-start px-10 relative ${index !== services.length - 1 ? 'md:after:content-[""] md:after:absolute md:after:right-0 md:after:top-1/2 md:after:-translate-y-1/2 md:after:w-[1px] md:after:h-[184px] md:after:bg-black/10' : ''
-                                }`}
+                            className={`flex-1 relative ${index !== services.length - 1 ? 'md:after:content-["\"] md:after:absolute md:after:right-0 md:after:top-1/2 md:after:-translate-y-1/2 md:after:w-[1px] md:after:h-[184px] md:after:bg-black/10' : ''}`}
                         >
-                            <div className="mb-8">
-                                <service.icon className="w-20 h-20 text-[#e81c2e]" strokeWidth={1} />
-                            </div>
+                            {/* Service card with hover sweep */}
+                            <div className="group relative overflow-hidden rounded-lg">
+                                {/* sweeping overlay - moves left to right on hover */}
+                                <div className="absolute inset-0 bg-white/90 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out pointer-events-none"></div>
 
-                            <h3 className="font-barlow font-bold text-[24px] text-[#19191b] mb-4 leading-none">
-                                {service.title}
-                            </h3>
-                            <p className="font-ubuntu text-[14px] text-black/80 leading-[2] max-w-[280px]">
-                                {service.description}
-                            </p>
+                                <div className="relative z-10 flex flex-col items-start px-10 py-8 hover:shadow-lg transition-shadow duration-300">
+                                    <div className="mb-8">
+                                        <service.icon className="w-20 h-20 text-[#e81c2e] transform transition-transform duration-300 ease-out group-hover:-translate-y-3" strokeWidth={1} />
+                                    </div>
+
+                                    <h3 className="font-barlow font-bold text-[24px] text-[#19191b] mb-4 leading-none transition-colors duration-300">
+                                        {service.title}
+                                    </h3>
+                                    <p className="font-ubuntu text-[14px] text-black/80 leading-[2] max-w-[280px] transition-colors duration-300">
+                                        {service.description}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>
