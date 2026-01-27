@@ -10,9 +10,16 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        brand: {
+          red: '#e41d25',
+          dark: '#1a1a1a',
+          gray: '#666666',
+          light: '#f9f9f9',
+        }
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "sans-serif"],
+        sans: ['Roboto', 'sans-serif'],
+        display: ['Barlow', 'sans-serif'],
         mono: ["var(--font-geist-mono)", "monospace"],
       },
     },

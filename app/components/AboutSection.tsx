@@ -64,7 +64,7 @@ export default function AboutSection() {
                                     Call for book: <span className="text-[#e81c2e] ml-2 font-black">8-800-10-500</span>
                                 </h6>
                             </div>
-
+                            
                             {/* CTA Button */}
                             <button className="group relative bg-[#e81c2e] text-white font-barlow font-bold py-[18px] px-[35px] rounded-[40px] flex items-center gap-3 btn-hover-slide-white transition-all duration-300">
                                 Read More

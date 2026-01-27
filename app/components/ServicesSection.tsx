@@ -226,7 +226,9 @@ const ServicesSection: React.FC = () => {
                     </ul>
 
                     <div className="text-left">
-                      <Button>Get Plan</Button>
+                      <Button className="group bg-[#e81c2e] text-white font-barlow font-bold py-[18px] px-[35px] rounded-[40px] flex items-center gap-3 btn-hover-slide-white transition-all duration-300">
+                        Get Plan
+                      </Button>
                     </div>
                   </div>
                 </div>

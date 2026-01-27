@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Ubuntu, Barlow_Semi_Condensed } from "next/font/google";
+import { Ubuntu, Barlow_Semi_Condensed, Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 
@@ -17,6 +17,13 @@ const barlow = Barlow_Semi_Condensed({
   display: 'swap',
 });
 
+const roboto = Roboto({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+  variable: '--font-roboto',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: "Aqualine Autocare - Car Wash Services",
   description: "Professional car wash and auto care services",
@@ -30,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${ubuntu.variable} ${barlow.variable} font-sans antialiased`}
+        className={`${ubuntu.variable} ${barlow.variable} ${roboto.variable} font-sans antialiased`}
       >
         <Navbar />
         {children}
