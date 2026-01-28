@@ -96,6 +96,11 @@ const CarDetailingSection = () => {
             opacity: 0
         })
     };
+    const fadeVariants = {
+        enter: { opacity: 0 },
+        center: { opacity: 1 },
+        exit: { opacity: 0 }
+    };
 
     return (
         <section className="bg-[#111111] py-24 text-white font-['Roboto'] overflow-hidden">
@@ -103,8 +108,8 @@ const CarDetailingSection = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
                     {/* Left Column: Info & Nav */}
-                    <div className="lg:col-span-3 pt-[73px]">
-                        <div className="relative flex flex-col min-h-[400px]">
+                    <div className="lg:col-span-2 pt-[73px]">
+                        <div className="relative flex flex-col lg:h-[547px]">
                             <div className="relative overflow-hidden">
                                 <AnimatePresence mode="wait" custom={direction}>
                                     <motion.div
@@ -121,11 +126,11 @@ const CarDetailingSection = () => {
                                     >
                                         <div className="flex items-center gap-4 mb-4">
                                             <span className="w-10 h-[1px] bg-[#e6242e]"></span>
-                                            <span className="text-[#e6242e] font-['Teko'] font-bold text-xl tracking-widest uppercase">
+                                            <span className="text-[#e6242e] font-['Teko'] font-bold text-xl tracking-widest uppercase whitespace-nowrap">
                                                 {service.label}
                                             </span>
                                         </div>
-                                        <h2 className="text-3xl lg:text-4xl font-['Barlow_Semi_Condensed'] font-extrabold leading-[1.2] uppercase mb-10">
+                                        <h2 className="text-2xl lg:text-3xl font-['Barlow_Semi_Condensed'] font-extrabold leading-[1.2] uppercase mb-10">
                                             {service.title}
                                         </h2>
                                         <button className="group relative bg-[#e81c2e] text-white font-barlow font-bold py-[18px] px-[35px] rounded-[40px] flex items-center gap-3 btn-hover-slide-white transition-all duration-300">
@@ -161,8 +166,8 @@ const CarDetailingSection = () => {
                     </div>
 
                     {/* Middle Column: Slider */}
-                    <div className="lg:col-span-6 relative">
-                        <div className="w-full relative pt-[73px] pb-[73px]">
+                    <div className="lg:col-span-8 relative">
+                        <div className="w-full max-w-[825px] mx-auto relative pt-[73px] pb-[73px]">
                             {/* Background Outlined Text - BEFORE (Top Left) */}
                             <div
                                 className="absolute left-[20px] top-0 select-none pointer-events-none opacity-50 z-10"
@@ -176,12 +181,23 @@ const CarDetailingSection = () => {
                                 <span className="text-outline uppercase">BEFORE</span>
                             </div>
 
-                            <div className="relative px-2 z-20">
-                                <BeforeAfterSlider
-                                    key={service.id}
-                                    beforeImage={service.beforeImage}
-                                    afterImage={service.afterImage}
-                                />
+                            <div className="relative z-20">
+                                <AnimatePresence mode="wait">
+                                    <motion.div
+                                        key={currentIndex}
+                                        variants={fadeVariants}
+                                        initial="enter"
+                                        animate="center"
+                                        exit="exit"
+                                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                                    >
+                                        <BeforeAfterSlider
+                                            key={service.id}
+                                            beforeImage={service.beforeImage}
+                                            afterImage={service.afterImage}
+                                        />
+                                    </motion.div>
+                                </AnimatePresence>
                             </div>
 
                             {/* Background Outlined Text - AFTER (Bottom Right) */}
@@ -200,16 +216,16 @@ const CarDetailingSection = () => {
                     </div>
 
                     {/* Right Column: Perks (Static) */}
-                    <div className="lg:col-span-3 flex flex-col pt-[73px]">
-                        <div className="flex flex-col gap-12">
+                    <div className="lg:col-span-2 flex flex-col pt-[73px]">
+                        <div className="flex flex-col gap-10">
                             {staticPerks.map((perk, idx) => (
-                                <div key={idx} className="flex gap-6 items-start">
-                                    <div className="text-[#e41d25] flex-shrink-0 animate-pulse">
+                                <div key={idx} className="flex gap-4 items-start">
+                                    <div className="text-[#e41d25] flex-shrink-0 animate-pulse w-8 h-8">
                                         {perk.icon}
                                     </div>
-                                    <div className="font-['Ubuntu']">
-                                        <h3 className="text-xl font-bold mb-2 uppercase tracking-wide">{perk.title}</h3>
-                                        <p className="text-[rgba(255,255,255,0.7)] text-sm leading-relaxed font-normal">
+                                    <div className="font-['Ubuntu'] overflow-hidden">
+                                        <h3 className="text-lg font-bold mb-1 uppercase tracking-wide truncate">{perk.title}</h3>
+                                        <p className="text-[rgba(255,255,255,0.7)] text-sm leading-relaxed font-normal line-clamp-3 overflow-hidden">
                                             {perk.description}
                                         </p>
                                     </div>
