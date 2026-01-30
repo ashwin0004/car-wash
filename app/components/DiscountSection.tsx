@@ -64,7 +64,7 @@ export default function DiscountSection() {
 
                     {/* Right Button */}
                     <div className="z-10">
-                        <button className="btn-hover-slide-white group flex items-center justify-between w-[240px] bg-[#1a1a1a] text-white px-8 py-4 rounded-full font-barlow font-bold uppercase tracking-wider text-sm transition-all duration-300">
+                        <button className="btn-hover-slide-white group flex items-center justify-center gap-3 w-[240px] bg-[#1a1a1a] text-white px-8 py-4 rounded-full font-barlow font-bold uppercase tracking-wider text-sm transition-all duration-300">
                             Join now
                             <span className="w-6 h-6 border border-current rounded-full flex items-center justify-center text-xs group-hover:bg-[#1a1a1a] group-hover:text-white group-hover:border-transparent transition-colors">
                                 <BsArrowRight className="w-3 h-3" />
