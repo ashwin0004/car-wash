@@ -108,7 +108,7 @@ const CarDetailingSection = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
                     {/* Left Column: Info & Nav */}
-                    <div className="lg:col-span-2 pt-[73px]">
+                    <div className="lg:col-span-3 pt-[73px]">
                         <div className="relative flex flex-col lg:h-[547px]">
                             <div className="relative overflow-hidden">
                                 <AnimatePresence mode="wait" custom={direction}>
@@ -166,8 +166,8 @@ const CarDetailingSection = () => {
                     </div>
 
                     {/* Middle Column: Slider */}
-                    <div className="lg:col-span-8 relative">
-                        <div className="w-full max-w-[825px] mx-auto relative pt-[73px] pb-[73px]">
+                    <div className="lg:col-span-6 relative">
+                        <div className="w-full max-w-[700px] mx-auto relative pt-[73px] pb-[73px]">
                             {/* Background Outlined Text - BEFORE (Top Left) */}
                             <div
                                 className="absolute left-[20px] top-0 select-none pointer-events-none opacity-50 z-10"
@@ -216,16 +216,16 @@ const CarDetailingSection = () => {
                     </div>
 
                     {/* Right Column: Perks (Static) */}
-                    <div className="lg:col-span-2 flex flex-col pt-[73px]">
+                    <div className="lg:col-span-3 flex flex-col pt-[73px]">
                         <div className="flex flex-col gap-10">
                             {staticPerks.map((perk, idx) => (
                                 <div key={idx} className="flex gap-4 items-start">
                                     <div className="text-[#e41d25] flex-shrink-0 animate-pulse w-8 h-8">
                                         {perk.icon}
                                     </div>
-                                    <div className="font-['Ubuntu'] overflow-hidden">
-                                        <h3 className="text-lg font-bold mb-1 uppercase tracking-wide truncate">{perk.title}</h3>
-                                        <p className="text-[rgba(255,255,255,0.7)] text-sm leading-relaxed font-normal line-clamp-3 overflow-hidden">
+                                    <div className="font-['Ubuntu']">
+                                        <h3 className="text-lg font-bold mb-1 uppercase tracking-wide">{perk.title}</h3>
+                                        <p className="text-[rgba(255,255,255,0.7)] text-sm leading-relaxed font-normal">
                                             {perk.description}
                                         </p>
                                     </div>

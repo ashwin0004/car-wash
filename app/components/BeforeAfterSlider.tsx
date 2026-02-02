@@ -59,7 +59,7 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImage, afte
     return (
         <div
             ref={containerRef}
-            className="relative w-full max-w-[825px] h-[547px] rounded-[2rem] overflow-clip cursor-ew-resize select-none shadow-2xl border border-white/5"
+            className="relative w-full max-w-[700px] h-[465px] rounded-[2rem] overflow-clip cursor-ew-resize select-none shadow-2xl border border-white/5"
             style={{ position: 'static', display: 'block' }}
             onMouseDown={() => setIsDragging(true)}
             onTouchStart={() => setIsDragging(true)}
