@@ -130,10 +130,10 @@ const CarDetailingSection = () => {
                                                 {service.label}
                                             </span>
                                         </div>
-                                        <h2 className="text-2xl lg:text-3xl font-['Barlow_Semi_Condensed'] font-extrabold leading-[1.2] uppercase mb-10">
+                                        <h2 className="relative z-[3] text-[48px] font-['Barlow_Semi_Condensed'] font-extrabold leading-[1.15] text-white m-0 text-left mb-10">
                                             {service.title}
                                         </h2>
-                                        <button className="group relative bg-[#e81c2e] text-white font-barlow font-bold py-[18px] px-[35px] rounded-[40px] flex items-center gap-3 btn-hover-slide-white transition-all duration-300">
+                                        <button className="group relative bg-[#e81c2e] text-white font-barlow font-bold py-[22px] px-[50px] rounded-[40px] flex items-center justify-center gap-3 btn-hover-slide-white transition-all duration-300 w-full lg:w-max">
                                             Read More
                                             <div className="w-[24px] h-[24px] rounded-full border border-white/50 flex items-center justify-center group-hover:border-[#19191B]/30 transition-colors duration-400">
                                                 <ChevronIcon className="w-3 h-3 group-hover:text-[#19191B] transition-colors duration-400" />
