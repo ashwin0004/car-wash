@@ -4,6 +4,7 @@ import ServicesSection from './components/ServicesSection';
 import { PricingSection } from './components/PricingSection';
 import DiscountSection from './components/DiscountSection';
 import CarDetailingSection from './components/CarDetailingSection';
+import { CarWashSection } from './components/CarWashSection';
 
 export default function Home() {
   return (
@@ -24,6 +25,9 @@ export default function Home() {
 
       {/* Discount Program Section */}
       <DiscountSection />
+
+      {/* Car Wash Section */}
+      <CarWashSection />
     </main>
   );
 }
