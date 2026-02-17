@@ -54,27 +54,17 @@ const TESTIMONIALS: Testimonial[] = [
 
 export default function TestimonialSection() {
     const [activeIndex, setActiveIndex] = useState(0);
-    const [isAnimating, setIsAnimating] = useState(false);
     const [direction, setDirection] = useState<'left' | 'right'>('right');
 
-    // Animation duration in ms - must match CSS animation duration
-    const ANIMATION_DURATION = 1500;
-
     const handleNext = useCallback(() => {
-        if (isAnimating) return;
-        setDirection('right'); // Incoming slide comes from right
-        setIsAnimating(true);
-        setTimeout(() => setIsAnimating(false), ANIMATION_DURATION);
+        setDirection('right');
         setActiveIndex((current) => (current + 1) % TESTIMONIALS.length);
-    }, [isAnimating]);
+    }, []);
 
     const handlePrev = useCallback(() => {
-        if (isAnimating) return;
-        setDirection('left'); // Incoming slide comes from left
-        setIsAnimating(true);
-        setTimeout(() => setIsAnimating(false), ANIMATION_DURATION);
+        setDirection('left');
         setActiveIndex((current) => (current === 0 ? TESTIMONIALS.length - 1 : current - 1));
-    }, [isAnimating]);
+    }, []);
 
     // Auto-play interval set to 8 seconds
     useEffect(() => {
@@ -112,32 +102,15 @@ export default function TestimonialSection() {
                 {/* Carousel Container */}
                 <div className="relative max-w-5xl mx-auto">
 
-                    {/* Navigation Arrows */}
-                    <button
-                        onClick={handlePrev}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center text-white/40 hover:text-[#E81C2E] transition-colors duration-300 hidden md:flex"
-                        aria-label="Previous slide"
-                    >
-                        <ChevronLeft className="w-10 h-10" strokeWidth={1.5} />
-                    </button>
-
-                    <button
-                        onClick={handleNext}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center text-white/40 hover:text-[#E81C2E] transition-colors duration-300 hidden md:flex"
-                        aria-label="Next slide"
-                    >
-                        <ChevronRight className="w-10 h-10" strokeWidth={1.5} />
-                    </button>
-
                     {/* Slide Content */}
                     {/* 
              Using a fixed height (h-[450px]) prevents the section from jumping/resizing
              which stabilizes the fixed background.
           */}
-                    <div className="px-4 md:px-20 h-[450px] flex items-center justify-center overflow-hidden">
+                    <div className="px-4 md:px-20 h-[450px] flex items-center justify-center overflow-hidden pointer-events-none">
                         <div
                             key={currentTestimonial.id}
-                            className={`flex flex-col items-center text-center w-full max-w-3xl ${animationClass}`}
+                            className={`flex flex-col items-center text-center w-full max-w-3xl pointer-events-auto ${animationClass}`}
                         >
                             {/* Description / Quote */}
                             <div className="mb-10 relative">
@@ -182,6 +155,23 @@ export default function TestimonialSection() {
 
                 </div>
             </div>
+
+            {/* Navigation Arrows - Positioned at the absolute edges of the section */}
+            <button
+                onClick={handlePrev}
+                className="absolute left-4 lg:left-10 top-1/2 -translate-y-1/2 z-50 ltx-arrow-left hidden md:flex pointer-events-auto"
+                aria-label="Previous slide"
+            >
+                <ChevronLeft className="w-6 h-6" strokeWidth={2} />
+            </button>
+
+            <button
+                onClick={handleNext}
+                className="absolute right-4 lg:right-10 top-1/2 -translate-y-1/2 z-50 ltx-arrow-right hidden md:flex pointer-events-auto"
+                aria-label="Next slide"
+            >
+                <ChevronRight className="w-6 h-6" strokeWidth={2} />
+            </button>
         </section>
     );
 }
