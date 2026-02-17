@@ -3,9 +3,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Testimonial } from '../types';
 
-// Note: Ensure styles.css (globals.css) contains the animation and parallax classes
+// Note: Ensure globals.css contains the parallax and arrow classes
 
 const TESTIMONIALS: Testimonial[] = [
     {
@@ -52,19 +53,37 @@ const TESTIMONIALS: Testimonial[] = [
     }
 ];
 
+const variants = {
+    enter: (direction: number) => ({
+        x: direction > 0 ? 1000 : -1000,
+        opacity: 0,
+        scale: 0.95
+    }),
+    center: {
+        zIndex: 1,
+        x: 0,
+        opacity: 1,
+        scale: 1
+    },
+    exit: (direction: number) => ({
+        zIndex: 0,
+        x: direction < 0 ? 1000 : -1000,
+        opacity: 0,
+        scale: 0.95
+    })
+};
+
 export default function TestimonialSection() {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [direction, setDirection] = useState<'left' | 'right'>('right');
+    const [[page, direction], setPage] = useState([0, 0]);
 
-    const handleNext = useCallback(() => {
-        setDirection('right');
-        setActiveIndex((current) => (current + 1) % TESTIMONIALS.length);
-    }, []);
+    const activeIndex = (page % TESTIMONIALS.length + TESTIMONIALS.length) % TESTIMONIALS.length;
 
-    const handlePrev = useCallback(() => {
-        setDirection('left');
-        setActiveIndex((current) => (current === 0 ? TESTIMONIALS.length - 1 : current - 1));
-    }, []);
+    const paginate = useCallback((newDirection: number) => {
+        setPage([page + newDirection, newDirection]);
+    }, [page]);
+
+    const handleNext = useCallback(() => paginate(1), [paginate]);
+    const handlePrev = useCallback(() => paginate(-1), [paginate]);
 
     // Auto-play interval set to 8 seconds
     useEffect(() => {
@@ -72,23 +91,16 @@ export default function TestimonialSection() {
             handleNext();
         }, 8000);
         return () => clearInterval(timer);
-    }, [activeIndex, handleNext]);
+    }, [handleNext]);
 
     const currentTestimonial = TESTIMONIALS[activeIndex];
 
-    // Choose animation class based on direction
-    const animationClass = direction === 'right' ? 'animate-slideInRight' : 'animate-slideInLeft';
-
     return (
-        <section className="relative w-full py-28 bg-[#111111] text-white overflow-hidden font-sans group">
-            {/* Background Image with Fixed Parallax - styles in styles.css */}
-            <div className="absolute inset-0 z-0 testimonial-bg-parallax pointer-events-none" />
-
+        <section className="relative w-full py-28 bg-[#111111] text-white overflow-hidden font-sans group testimonial-bg-parallax min-h-[750px] flex items-center">
             {/* Dark Overlay */}
             <div className="absolute inset-0 z-0 bg-black/60 pointer-events-none"></div>
 
             <div className="relative z-10 container mx-auto px-4">
-
                 {/* Header Section */}
                 <div className="mb-12 text-center">
                     <h6 className="text-[#E81C2E] text-xs md:text-sm font-bold uppercase tracking-[3px] font-heading mb-3">
@@ -100,21 +112,24 @@ export default function TestimonialSection() {
                 </div>
 
                 {/* Carousel Container */}
-                <div className="relative max-w-5xl mx-auto">
-
-                    {/* Slide Content */}
-                    {/* 
-             Using a fixed height (h-[450px]) prevents the section from jumping/resizing
-             which stabilizes the fixed background.
-          */}
-                    <div className="px-4 md:px-20 h-[450px] flex items-center justify-center overflow-hidden pointer-events-none">
-                        <div
-                            key={currentTestimonial.id}
-                            className={`flex flex-col items-center text-center w-full max-w-3xl pointer-events-auto ${animationClass}`}
+                <div className="relative max-w-5xl mx-auto h-[450px]">
+                    <AnimatePresence initial={false} custom={direction} mode="popLayout">
+                        <motion.div
+                            key={page}
+                            custom={direction}
+                            variants={variants}
+                            initial="enter"
+                            animate="center"
+                            exit="exit"
+                            transition={{
+                                x: { type: "spring", stiffness: 100, damping: 20, duration: 3 },
+                                opacity: { duration: 1.5 },
+                                scale: { duration: 3 }
+                            }}
+                            className="flex flex-col items-center text-center w-full max-w-3xl mx-auto"
                         >
                             {/* Description / Quote */}
                             <div className="mb-10 relative">
-                                {/* Decorative Red "Comma" (Quote Mark) - styles in styles.css */}
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#E81C2E] select-none pointer-events-none opacity-20 z-0 testimonial-quote-mark">
                                     “
                                 </div>
@@ -144,15 +159,14 @@ export default function TestimonialSection() {
                             <div className="text-[#E81C2E] text-[13px] font-bold uppercase tracking-widest font-heading">
                                 {currentTestimonial.role}
                             </div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </AnimatePresence>
 
                     {/* Mobile Navigation */}
-                    <div className="flex justify-center gap-8 mt-8 md:hidden text-white/40">
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex justify-center gap-8 md:hidden text-white/40 z-20">
                         <button onClick={handlePrev}><ChevronLeft className="w-8 h-8" /></button>
                         <button onClick={handleNext}><ChevronRight className="w-8 h-8" /></button>
                     </div>
-
                 </div>
             </div>
 
