@@ -112,7 +112,7 @@ export const CarWashSection: React.FC = () => {
                     </div>
 
                     {/* Column 3: Form */}
-                    <div className="w-full lg:w-[30%] lg:pt-12 lg:pl-8 flex">
+                    <div className="w-full lg:w-[30%] lg:pt-12 lg:pl-10 lg:ml-3 flex">
                         {/* 
             Form Container:
             - bg-carbon-fiber + bg-repeat for pattern

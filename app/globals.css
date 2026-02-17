@@ -162,3 +162,64 @@ h6 {
   opacity: 0;
   transition: opacity 500ms ease-in-out;
 }
+
+/* 
+  Testimonial Section Animations 
+  ------------------------------
+*/
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideInRight {
+  animation: slideInRight 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 
+  Parallax Background 
+  -------------------
+  - Fixed attachment for the premium parallax effect.
+  - Positioned top-center to prevent jitter during resizing.
+*/
+.testimonial-bg-parallax {
+  background-image: url("https://aqualine.like-themes.com/wp-content/uploads/2018/02/testimonials_parallax.jpg");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* 
+  Typography Elements
+  -------------------
+*/
+.testimonial-quote-mark {
+  font-family: 'Georgia', serif;
+  margin-top: -10px;
+  font-size: 160px;
+  line-height: 1;
+}
