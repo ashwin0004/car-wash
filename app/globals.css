@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Oswald:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 :root {
   --background: #111111;
@@ -221,4 +221,80 @@ h6 {
   background-color: #ffffff !important;
   color: #111111 !important;
   transform: translateY(-50%) !important;
+}
+
+/* 
+  Client Logos Section Styles 
+  ---------------------------
+*/
+.client-logos-section {
+  background-color: #f3f3f3;
+  padding: 100px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.client-logos-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.logos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  align-items: center;
+  justify-items: center;
+}
+
+@media (min-width: 768px) {
+  .logos-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logos-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 48px;
+  }
+}
+
+.logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.logo-link {
+  display: block;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.logo-link:hover {
+  transform: translateY(-4px);
+}
+
+.logo-img {
+  width: auto;
+  height: auto;
+  max-width: 130px;
+  opacity: 0.4;
+  filter: grayscale(100%);
+  transition: all 0.3s ease-in-out;
+  display: block;
+}
+
+.logo-item:hover .logo-img {
+  opacity: 1;
+  filter: grayscale(0%);
 }

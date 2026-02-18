@@ -6,6 +6,7 @@ import DiscountSection from './components/DiscountSection';
 import CarDetailingSection from './components/CarDetailingSection';
 import { CarWashSection } from './components/CarWashSection';
 import TestimonialSection from './components/TestimonialSection';
+import ClientLogosSection from './components/ClientLogosSection';
 
 export default function Home() {
   return (
@@ -32,6 +33,9 @@ export default function Home() {
 
       {/* Testimonial Section */}
       <TestimonialSection />
+
+      {/* Client Logos Section */}
+      <ClientLogosSection />
     </main>
   );
 }
