@@ -35,9 +35,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${ubuntu.variable} ${barlow.variable} ${roboto.variable} font-sans antialiased`}
+        suppressHydrationWarning
       >
         <Navbar />
         {children}
