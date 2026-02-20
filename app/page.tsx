@@ -5,6 +5,7 @@ import { PricingSection } from './components/PricingSection';
 import DiscountSection from './components/DiscountSection';
 import CarDetailingSection from './components/CarDetailingSection';
 import { CarWashSection } from './components/CarWashSection';
+import ProductSection from './components/ProductSection';
 import TestimonialSection from './components/TestimonialSection';
 import ClientLogosSection from './components/ClientLogosSection';
 
@@ -36,6 +37,9 @@ export default function Home() {
 
       {/* Client Logos Section */}
       <ClientLogosSection />
+
+      {/* Popular Products Section */}
+      <ProductSection />
     </main>
   );
 }
