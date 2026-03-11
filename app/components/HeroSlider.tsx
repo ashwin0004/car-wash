@@ -120,7 +120,7 @@ export default function HeroSlider() {
                             </p>
 
                             {/* Title */}
-                            <h1 className="text-white font-barlow font-bold text-[50px] md:text-[90px] leading-[1.1] mb-6 opacity-0 animate-fade-in-up delay-200">
+                            <h1 className="text-white font-barlow font-bold text-[36px] sm:text-[50px] md:text-[90px] leading-[1.1] mb-6 opacity-0 animate-fade-in-up delay-200">
                                 {slide.title}
                             </h1>
 
@@ -130,15 +130,15 @@ export default function HeroSlider() {
                             </p>
 
                             {/* Buttons */}
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-in-up delay-600">
-                                <button className="group bg-[#e81c2e] text-white font-barlow font-bold py-[18px] px-[35px] rounded-[40px] flex items-center gap-3 btn-hover-slide-white transition-all duration-300">
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-in-up delay-600 w-full sm:w-auto px-4 sm:px-0">
+                                <button className="group bg-[#e81c2e] w-full sm:w-auto text-white font-barlow font-bold py-[18px] px-[35px] rounded-[40px] flex items-center justify-center gap-3 btn-hover-slide-white transition-all duration-300">
                                     Read More
                                     <div className="w-[24px] h-[24px] rounded-full border border-white/50 flex items-center justify-center group-hover:border-black/30 transition-colors duration-400">
                                         <ChevronIcon className="w-3 h-3 group-hover:text-[#19191b] transition-colors duration-400" />
                                     </div>
                                 </button>
 
-                                <button className="group bg-[#ccb686] text-[#19191b] font-barlow font-bold py-[18px] px-[35px] rounded-[40px] flex items-center gap-3 btn-hover-slide-white transition-all duration-300">
+                                <button className="group bg-[#ccb686] w-full sm:w-auto text-[#19191b] font-barlow font-bold py-[18px] px-[35px] rounded-[40px] flex items-center justify-center gap-3 btn-hover-slide-white transition-all duration-300">
                                     Order Now
                                     <div className="w-[24px] h-[24px] rounded-full border-black/30 flex items-center justify-center transition-colors duration-400">
                                         <ChevronIcon className="w-3 h-3" />

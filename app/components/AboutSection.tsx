@@ -32,7 +32,7 @@ const services = [
 export default function AboutSection() {
     return (
         <section className="py-20 bg-white overflow-hidden">
-            <div className="max-w-[1280px] mx-auto px-6 lg:px-15">
+            <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-15">
                 <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
 
 
@@ -48,7 +48,7 @@ export default function AboutSection() {
                             </div>
 
                             {/* Main Heading */}
-                            <h2 className="text-[#19191B] font-barlow font-bold text-[40px] md:text-[48px] leading-[1.15] mb-6">
+                            <h2 className="text-[#19191B] font-barlow font-bold text-[32px] sm:text-[40px] md:text-[48px] leading-[1.15] mb-6">
                                 Professional washing and <br className="hidden md:block" />
                                 cleaning of your car
                             </h2>
@@ -59,14 +59,15 @@ export default function AboutSection() {
                             </p>
 
                             {/* Call for book */}
-                            <div className="mb-10">
-                                <h6 className="text-[#19191B] font-barlow font-extrabold text-[24px]">
-                                    Call for book: <span className="text-[#e81c2e] ml-2 font-black">8-800-10-500</span>
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 mb-10">
+                                <h6 className="text-[#19191B] font-barlow font-extrabold text-[20px] md:text-[24px]">
+                                    Call for book:
                                 </h6>
+                                <span className="text-[#e81c2e] font-black text-[20px] md:text-[24px]">8-800-10-500</span>
                             </div>
                             
                             {/* CTA Button */}
-                            <button className="group relative bg-[#e81c2e] text-white font-barlow font-bold py-[18px] px-[35px] rounded-[40px] flex items-center gap-3 btn-hover-slide-white transition-all duration-300">
+                            <button className="group relative bg-[#e81c2e] text-white font-barlow font-bold py-[18px] px-[35px] rounded-[40px] flex items-center justify-center gap-3 btn-hover-slide-white transition-all duration-300 w-full sm:w-auto">
                                 Read More
                                 <div className="w-[24px] h-[24px] rounded-full border border-white/50 flex items-center justify-center group-hover:border-[#19191B]/30 transition-colors duration-400">
                                     <ChevronIcon className="w-3 h-3 group-hover:text-[#19191B] transition-colors duration-400" />
@@ -107,10 +108,10 @@ export default function AboutSection() {
                                         <service.icon className="w-20 h-20 text-[#e81c2e] transform transition-transform duration-300 ease-out group-hover:-translate-y-3" strokeWidth={1} />
                                     </div>
 
-                                    <h3 className="font-barlow font-bold text-[24px] text-[#19191b] mb-4 leading-none transition-colors duration-300">
+                                    <h3 className="font-barlow font-bold text-[22px] md:text-[24px] text-[#19191b] mb-4 leading-[1.2] transition-colors duration-300">
                                         {service.title}
                                     </h3>
-                                    <p className="font-ubuntu text-[14px] text-black/80 leading-[2] max-w-[280px] transition-colors duration-300">
+                                    <p className="font-ubuntu text-[14px] text-black/80 leading-[1.8] max-w-full transition-colors duration-300">
                                         {service.description}
                                     </p>
                                 </div>

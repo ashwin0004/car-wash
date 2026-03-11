@@ -8,6 +8,7 @@ import { CarWashSection } from './components/CarWashSection';
 import ProductSection from './components/ProductSection';
 import TestimonialSection from './components/TestimonialSection';
 import ClientLogosSection from './components/ClientLogosSection';
+import Footer from './components/Footer';
 
 export default function Home() {
   return (
@@ -40,6 +41,9 @@ export default function Home() {
 
       {/* Popular Products Section */}
       <ProductSection />
+
+      {/* Footer */}
+      <Footer />
     </main>
   );
 }

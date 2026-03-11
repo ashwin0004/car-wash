@@ -108,7 +108,7 @@ const CarDetailingSection = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
                     {/* Left Column: Info & Nav */}
-                    <div className="lg:col-span-3 pt-[73px]">
+                    <div className="lg:col-span-3 pt-10 lg:pt-[73px]">
                         <div className="relative flex flex-col lg:h-[547px]">
                             <div className="relative overflow-hidden">
                                 <AnimatePresence mode="wait" custom={direction}>
@@ -130,10 +130,10 @@ const CarDetailingSection = () => {
                                                 {service.label}
                                             </span>
                                         </div>
-                                        <h2 className="relative z-[3] text-[48px] font-['Barlow_Semi_Condensed'] font-extrabold leading-[1.15] text-white m-0 text-left mb-10">
+                                        <h2 className="relative z-[3] text-[36px] md:text-[48px] font-['Barlow_Semi_Condensed'] font-extrabold leading-[1.15] text-white m-0 text-left mb-8 lg:mb-10">
                                             {service.title}
                                         </h2>
-                                        <button className="group relative bg-[#e81c2e] text-white font-barlow font-bold py-[22px] px-[50px] rounded-[40px] flex items-center justify-center gap-3 btn-hover-slide-white transition-all duration-300 w-full lg:w-max">
+                                        <button className="group relative bg-[#e81c2e] text-white font-barlow font-bold py-[20px] md:py-[22px] px-[40px] md:px-[50px] rounded-[40px] flex items-center justify-center gap-3 btn-hover-slide-white transition-all duration-300 w-full lg:w-max">
                                             Read More
                                             <div className="w-[24px] h-[24px] rounded-full border border-white/50 flex items-center justify-center group-hover:border-[#19191B]/30 transition-colors duration-400">
                                                 <ChevronIcon className="w-3 h-3 group-hover:text-[#19191B] transition-colors duration-400" />
@@ -144,7 +144,7 @@ const CarDetailingSection = () => {
                             </div>
 
                             {/* Nav Arrows - Pushed to bottom of min-h */}
-                            <div className="flex gap-4 mt-auto">
+                            <div className="flex justify-center lg:justify-start gap-4 mt-12 lg:mt-auto">
                                 <button
                                     onClick={prevService}
                                     className="w-12 h-12 rounded-full border border-white flex items-center justify-center hover:bg-[#e6242e] hover:border-[#e6242e] transition-all group"
@@ -166,16 +166,16 @@ const CarDetailingSection = () => {
                     </div>
 
                     {/* Middle Column: Slider */}
-                    <div className="lg:col-span-6 relative">
-                        <div className="w-full max-w-[700px] mx-auto relative pt-[73px] pb-[73px]">
+                    <div className="lg:col-span-6 relative mt-8 lg:mt-0">
+                        <div className="w-full max-w-[700px] mx-auto relative pt-10 pb-10 lg:pt-[73px] lg:pb-[73px]">
                             {/* Background Outlined Text - BEFORE (Top Left) */}
                             <div
-                                className="absolute left-[20px] top-0 select-none pointer-events-none opacity-50 z-10"
+                                className="absolute left-[20px] top-4 md:top-0 select-none pointer-events-none opacity-50 z-10"
                                 style={{
                                     fontFamily: "'Barlow Semi Condensed', sans-serif",
-                                    fontSize: '80px',
+                                    fontSize: 'clamp(40px, 8vw, 80px)',
                                     fontWeight: 700,
-                                    lineHeight: '80px'
+                                    lineHeight: '1'
                                 }}
                             >
                                 <span className="text-outline uppercase">BEFORE</span>
@@ -202,12 +202,12 @@ const CarDetailingSection = () => {
 
                             {/* Background Outlined Text - AFTER (Bottom Right) */}
                             <div
-                                className="absolute right-[20px] bottom-0 select-none pointer-events-none opacity-50 z-10"
+                                className="absolute right-[20px] bottom-4 md:bottom-0 select-none pointer-events-none opacity-50 z-10"
                                 style={{
                                     fontFamily: "'Barlow Semi Condensed', sans-serif",
-                                    fontSize: '80px',
+                                    fontSize: 'clamp(40px, 8vw, 80px)',
                                     fontWeight: 700,
-                                    lineHeight: '80px'
+                                    lineHeight: '1'
                                 }}
                             >
                                 <span className="text-outline uppercase">AFTER</span>
@@ -216,7 +216,7 @@ const CarDetailingSection = () => {
                     </div>
 
                     {/* Right Column: Perks (Static) */}
-                    <div className="lg:col-span-3 flex flex-col pt-[73px]">
+                    <div className="lg:col-span-3 flex flex-col pt-10 lg:pt-[73px]">
                         <div className="flex flex-col gap-10">
                             {staticPerks.map((perk, idx) => (
                                 <div key={idx} className="flex gap-4 items-start">

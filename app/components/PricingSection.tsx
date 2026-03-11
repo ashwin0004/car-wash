@@ -140,7 +140,7 @@ const VehicleSelector: React.FC<{
   onSelect: (vehicle: VehicleType) => void;
 }> = ({ selectedVehicle, onSelect }) => {
   return (
-    <div className="flex flex-wrap justify-center gap-6 sm:gap-12 mb-8">
+    <div className="flex sm:flex-wrap justify-start sm:justify-center gap-4 sm:gap-6 lg:gap-12 mb-8 min-w-max sm:min-w-0">
       {VEHICLES.map((vehicle) => {
         const isSelected = selectedVehicle === vehicle.id;
         return (
@@ -149,25 +149,25 @@ const VehicleSelector: React.FC<{
             onClick={() => onSelect(vehicle.id)}
             className={`
               group relative flex flex-col items-center justify-center 
-              w-40 sm:w-48 py-8 transition-all duration-300 rounded-2xl cursor-pointer
+              w-32 sm:w-40 md:w-48 py-6 sm:py-8 transition-all duration-300 rounded-2xl cursor-pointer flex-shrink-0
               ${isSelected 
-                ? 'bg-white shadow-xl scale-110 z-10 hover:-translate-y-2 hover:shadow-2xl' 
+                ? 'bg-white shadow-xl scale-105 sm:scale-110 z-10 sm:hover:-translate-y-2 hover:shadow-2xl' 
                 : 'bg-transparent border border-transparent hover:bg-white hover:shadow-lg'
               }
             `}
           >
             <div className={`
-              mb-6 transition-all duration-500 ease-out transform
+              mb-4 sm:mb-6 transition-all duration-500 ease-out transform w-24 sm:w-32
               ${isSelected 
-                ? 'scale-110 -translate-y-2' 
-                : 'group-hover:scale-110 group-hover:-translate-y-2'
+                ? 'scale-105 sm:scale-110 -translate-y-1 sm:-translate-y-2' 
+                : 'group-hover:scale-110 sm:group-hover:-translate-y-2'
               }
             `}>
                {VehicleIcons[vehicle.id]}
             </div>
             
             <span className={`
-              text-base sm:text-lg font-['Barlow'] font-extrabold uppercase tracking-widest transition-colors duration-300 
+              text-sm sm:text-base md:text-lg font-['Barlow'] font-extrabold uppercase tracking-widest transition-colors duration-300 text-center px-2
               ${isSelected ? 'text-[#1a1a1a]' : 'text-gray-500 group-hover:text-[#1a1a1a]'}
             `}>
               {vehicle.label}
@@ -310,17 +310,19 @@ export const PricingSection: React.FC = () => {
             Choose Your Plan
           </h2>
           {/* Updated Paragraph with requested styles */}
-          <p className="max-w-[1000px] mx-auto text-[rgba(0,0,0,0.75)] leading-[27.2px] text-base font-['Ubuntu'] mb-[10px]">
+          <p className="max-w-[1000px] mx-auto text-[rgba(0,0,0,0.75)] leading-[27.2px] text-sm md:text-base font-['Ubuntu'] mb-[10px]">
             Car washes using natural cleaners help maintain your vehicle&apos;s finish while being environmentally responsible. 
             Heightened care ensures even the smallest details, like air vents and cup holders, are cleaned perfectly.
           </p>
         </div>
 
         {/* Vehicle Selection Tabs */}
-        <VehicleSelector 
-          selectedVehicle={selectedVehicleId} 
-          onSelect={setSelectedVehicleId} 
-        />
+        <div className="overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 sm:overflow-visible">
+          <VehicleSelector 
+            selectedVehicle={selectedVehicleId} 
+            onSelect={setSelectedVehicleId} 
+          />
+        </div>
 
         {/* Carousel Container */}
         <div className="w-full overflow-hidden py-12">

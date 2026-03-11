@@ -12,14 +12,14 @@ export default function DiscountSection() {
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-0 lg:gap-8 w-full">
 
                     {/* Left Text */}
-                    <div className="z-10 lg:text-left">
-                        <h2 className="font-['Barlow_Semi_Condensed',_serif] font-bold text-[36px] leading-[54px] text-[#19191b] mb-2 tracking-normal max-w-[497px]">
+                    <div className="z-10 text-center lg:text-left pt-10 lg:pt-0">
+                        <h2 className="font-['Barlow_Semi_Condensed',_serif] font-bold text-[28px] md:text-[36px] leading-[1.2] lg:leading-[54px] text-[#19191b] mb-2 tracking-normal max-w-[497px] mx-auto lg:mx-0">
                             Hurry to join the <span className="text-white">discount program</span>
                         </h2>
                     </div>
 
                     {/* Center Image - Cards */}
-                    <div className="relative flex flex-row justify-center gap-0 flex-shrink-0 lg:mb-[-180px] z-10 transform translate-y-4 lg:translate-y-0 cursor-pointer rotate-[-10deg] origin-center">
+                    <div className="relative flex flex-row justify-center gap-0 flex-shrink-0 lg:mb-[-180px] z-10 transform translate-y-4 lg:translate-y-0 cursor-pointer rotate-[-10deg] origin-center my-10 lg:my-0 scale-75 md:scale-100">
                         <motion.div
                             whileHover={{ y: -20 }}
                             transition={{ duration: 0.5, ease: "easeOut" }}
@@ -63,7 +63,7 @@ export default function DiscountSection() {
                     </div>
 
                     {/* Right Button */}
-                    <div className="z-10">
+                    <div className="z-10 mb-10 lg:mb-0 pb-6 lg:pb-0 flex justify-center lg:justify-end w-full lg:w-auto">
                         <button className="btn-hover-slide-white group flex items-center justify-center gap-3 w-[240px] bg-[#1a1a1a] text-white px-8 py-4 rounded-full font-barlow font-bold uppercase tracking-wider text-sm transition-all duration-300">
                             Join now
                             <span className="w-6 h-6 border border-current rounded-full flex items-center justify-center text-xs group-hover:bg-[#1a1a1a] group-hover:text-white group-hover:border-transparent transition-colors">

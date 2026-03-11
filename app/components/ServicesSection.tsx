@@ -155,11 +155,11 @@ const ServicesSection: React.FC = () => {
       <div className="relative z-10 container mx-auto px-4">
         
         {/* Section Header */}
-        <div className="text-center mb-16 space-y-4">
+        <div className="text-center mb-10 md:mb-16 space-y-4">
           <span className="text-[#e6242d] uppercase tracking-[0.2em] text-xs font-bold">
             What We Do
           </span>
-          <h2 className="text-white text-4xl lg:text-5xl font-bold">
+          <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold">
             Premium Washing Services
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-sm leading-relaxed">
@@ -183,8 +183,8 @@ const ServicesSection: React.FC = () => {
               {services.map((service) => (
                 <div key={service.id} className="w-full flex-shrink-0 flex flex-col md:flex-row min-h-[500px]">
                   
-                  {/* Left: Image Area (65% width) */}
-                  <div className="relative w-full md:w-[65%] h-64 md:h-auto overflow-hidden group">
+                  {/* Left: Image Area (65% width on md+, full width on mobile) */}
+                  <div className="relative w-full md:w-[65%] h-[300px] md:h-auto overflow-hidden group">
                     <div className="w-full h-full relative">
                       <Image
                         src={service.image}
@@ -198,9 +198,9 @@ const ServicesSection: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Right: Content Area (35% width) */}
-                  <div className="w-full md:w-[35%] p-8 lg:p-14 flex flex-col justify-center bg-white relative">
-                    <h3 className="text-3xl lg:text-4xl font-bold text-[#111111] mb-3 text-left">
+                  {/* Right: Content Area (35% width on md+) */}
+                  <div className="w-full md:w-[35%] p-6 pt-8 pb-20 md:p-8 lg:p-14 flex flex-col justify-center bg-white relative">
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#111111] mb-3 text-left">
                       {service.title}
                     </h3>
                     
@@ -226,7 +226,7 @@ const ServicesSection: React.FC = () => {
                     </ul>
 
                     <div className="text-left">
-                      <Button className="group bg-[#e81c2e] text-white font-barlow font-bold py-[18px] px-[35px] rounded-[40px] flex items-center gap-3 btn-hover-slide-white transition-all duration-300">
+                      <Button className="group bg-[#e81c2e] text-white font-barlow font-bold py-[18px] px-[35px] rounded-[40px] flex items-center gap-3 btn-hover-slide-white transition-all duration-300 w-full sm:w-auto justify-center">
                         Get Plan
                       </Button>
                     </div>
@@ -236,8 +236,8 @@ const ServicesSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Static Navigation Controls - Positioned over the image area (centered on the 65% image width -> 32.5%) */}
-          <div className="absolute bottom-8 left-1/2 md:bottom-12 md:left-[32.5%] -translate-x-1/2 flex items-center gap-4 z-20">
+          {/* Static Navigation Controls - Positioned over the image area on md+, bottom center on mobile */}
+          <div className="absolute bottom-4 left-1/2 md:bottom-12 md:left-[32.5%] -translate-x-1/2 flex items-center gap-4 z-20">
             <span className="text-white font-bold text-lg drop-shadow-md">
               {currentIndex + 1}/{services.length}
             </span>
@@ -245,14 +245,14 @@ const ServicesSection: React.FC = () => {
             <div className="flex gap-2">
               <button 
                 onClick={handlePrev}
-                className="w-10 h-10 rounded-full border-2 border-white/50 text-white flex items-center justify-center hover:bg-[#e6242d] hover:border-[#e6242d] transition-all duration-300 backdrop-blur-sm bg-black/10"
+                className="w-10 h-10 rounded-full border-2 border-white/50 text-white flex items-center justify-center hover:bg-[#e6242d] hover:border-[#e6242d] transition-all duration-300 backdrop-blur-sm bg-black/10 md:bg-black/30 md:backdrop-blur-md"
                 aria-label="Previous Service"
               >
                 <PrevIcon className="w-5 h-5" />
               </button>
               <button 
                 onClick={handleNext}
-                className="w-10 h-10 rounded-full border-2 border-white/50 text-white flex items-center justify-center hover:bg-[#e6242d] hover:border-[#e6242d] transition-all duration-300 backdrop-blur-sm bg-black/10"
+                className="w-10 h-10 rounded-full border-2 border-white/50 text-white flex items-center justify-center hover:bg-[#e6242d] hover:border-[#e6242d] transition-all duration-300 backdrop-blur-sm bg-black/10 md:bg-black/30 md:backdrop-blur-md"
                 aria-label="Next Service"
               >
                 <NextIcon className="w-5 h-5" />
